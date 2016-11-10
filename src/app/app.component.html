@@ -1,0 +1,13 @@
+<div class="init-container"
+     [@loader]="'show'"
+     *ngIf="!loaded">
+    <h1 class="init-load">
+        Loading Neoludus..
+    </h1>
+</div>
+<div [@main]="readyState" [hidden]="!loaded" id="content">
+    <navigation></navigation>
+    <main id="main-content-wrap" class="col-lg-offset-2 col-lg-10 menu-expanded">
+        <router-outlet></router-outlet>
+    </main>
+</div>

@@ -1,0 +1,145 @@
+<header id="top-nav">
+    <div id="branding" class="col-lg-2">
+        <a href="#" id="logo">
+            <img src="../assets/images/design/logo.png" alt="Neoludus logo">
+        </a>
+    </div>
+    <div id="social-menu" class="col-lg-offset-8 col-lg-2">
+        <ul (neoOffClick)="setActiveSocial('none')">
+            <li class="col-lg-4" [ngClass]="{'selected': activeSocial === 'love'}">
+                <a (click)="setActiveSocial('love')" class="social-item">
+                    <i class="fa fa-heart"></i>
+                    <i class="drop-arrow fa"
+                       [ngClass]="{
+                           'fa-caret-down': activeSocial === 'love',
+                           'fa-caret-left' : activeSocial !== 'love'}">
+                    </i>
+                </a>
+            </li>
+            <li class="col-lg-4" [ngClass]="{'selected': activeSocial === 'msg'}">
+                <a (click)="setActiveSocial('msg')" class="social-item">
+                    <i class="fa fa-bell"></i>
+                    <i class="drop-arrow fa"
+                       [ngClass]="{
+                           'fa-caret-down': activeSocial === 'msg',
+                           'fa-caret-left' : activeSocial !== 'msg'}">
+                    </i>
+                </a>
+            </li>
+            <li class="col-lg-4" [ngClass]="{'selected': activeSocial === 'user'}">
+                <a (click)="setActiveSocial('user')" class="social-item">
+                    <i class="fa fa-user"></i>
+                    <i class="drop-arrow fa"
+                       [ngClass]="{
+                           'fa-caret-down': activeSocial === 'user',
+                           'fa-caret-left' : activeSocial !== 'user'}">
+                    </i>
+                </a>
+            </li>
+        </ul>
+        <div id="social-content-wrap" class="col-lg-2">
+            <div class="social-content"
+                 id="love"
+                 [@socialContentLove]=activeSocial>
+                <a class="col-lg-2" href=""><i class="fa fa-envelope"></i></a>
+                <a class="col-lg-2" href=""><i class="fa fa-facebook"></i></a>
+                <a class="col-lg-2" href=""><i class="fa fa-youtube"></i></a>
+                <a class="col-lg-2" href=""><i class="fa fa-twitch"></i></a>
+                <a class="col-lg-2" href=""><i class="fa fa-twitter"></i></a>
+                <a class="col-lg-2" href=""><i class="fa fa-paypal"></i></a>
+            </div>
+            <div class="social-content"
+                 id="msg"
+                 [@socialContentMsg]=activeSocial>
+                <ul id="notifications">
+                    <li class="notification">notification one</li>
+                    <li class="notification">notification two</li>
+                    <li class="notification">notification three</li>
+                    <li class="notification">notification four</li>
+                    <li class="notification">notification five</li>
+                </ul>
+                shit load of breaks
+            </div>
+            <div class="social-content"
+                 id="user"
+                 [@socialContentUser]=activeSocial>
+                social user content here
+            </div>
+        </div>
+    </div>
+</header>
+<div id="side-menu" class="col-lg-2 expanded">
+    <div class="input-group" id="search">
+        <input type="text" placeholder="Search site" class="form-control">
+        <!--search should be a button expanding a bar by clicking/swiping-->
+        <span class="input-group-btn">
+                <button class="btn btn-default" type="button">
+                    <i class="fa fa-search"></i>
+                </button>
+            </span>
+    </div>
+    <ul>
+        <li>
+            <a routerLink="/home" routerLinkActive="active">
+                <p>
+                    <i class="fa fa-fw fa-home"></i>&nbsp; Home
+                </p>
+            </a>
+        </li>
+        <li>
+            <a routerLink="/reviews" routerLinkActive="active">
+                <p>
+                    <i class="fa fa-fw fa-star"></i>&nbsp; Reviews
+                </p>
+            </a>
+        </li>
+        <li>
+            <a class="sub-menu-trigger" (click)="toggleShowSub()">
+                <p>
+                    <i class="fa fa-fw fa-video-camera"></i>&nbsp; Video
+                </p>
+                <i class="drop-down fa" [ngClass]="{'fa-caret-down': showSub, 'fa-caret-left': !showSub}"></i>
+                <!-- caret down if not expanded-->
+            </a>
+            <div class="fix"></div>
+            <ul [@submenu]="showSub" class="sub-menu">
+                <li>
+                    <a routerLink="/videos/live" routerLinkActive="active">
+                        <p>
+                            <i class="fa fa-fw fa-twitch"></i>&nbsp; Live
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/videos/lets-play" routerLinkActive="active">
+                        <p>
+                            <i class="fa fa-fw fa-youtube-play"></i>&nbsp; Let's Plays
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/videos/podcast" routerLinkActive="active">
+                        <p>
+                            <i class="fa fa-fw fa-podcast"></i>&nbsp; Podcasts
+                        </p>
+                    </a>
+                </li>
+            </ul>
+            <div class="fix"></div>
+        </li>
+        <li>
+            <a routerLink="/donate" routerLinkActive="active">
+                <p>
+                    <i class="fa fa-fw fa-beer"></i>&nbsp; Donate
+                </p>
+            </a>
+        </li>
+        <li>
+            <a routerLink="/contact" routerLinkActive="active">
+                <p>
+                    <i class="fa fa-fw fa-address-book"></i>&nbsp; Contact
+                </p>
+            </a>
+        </li>
+    </ul>
+</div>
