@@ -18,8 +18,11 @@ import {
 import {ENV_PROVIDERS} from './environment';
 import {ROUTES} from './app.routes';
 import {Configuration} from './app.constants';
-import {UserService} from './services/users/users.service';
+import {
+    UserController
+} from './controllers';
 import {APP_RESOLVER_PROVIDERS} from './app.resolver';
+import {UsersFactory} from './utils/factories';
 
 //components
 import {AppComponent} from './app.component';
@@ -27,9 +30,12 @@ import {
     AppState,
     InternalStateType
 } from './app.service';
-import {HomeComponent} from './views/home';
-import {NoContentComponent} from './no-content';
-import { NavigationComponent } from './views/navigation/navigation.component';
+import {
+    HomeComponent,
+    NoContentComponent,
+    NavigationComponent,
+    AuthForms
+} from './views';
 
 //directives
 import {NeoOffClick} from './utils/directives/off-click-directive';
@@ -56,6 +62,7 @@ type StoreType = {
         AppComponent,
         HomeComponent,
         NavigationComponent,
+        AuthForms,
         NoContentComponent
     ],
     imports: [ // import Angular's modules
@@ -68,7 +75,8 @@ type StoreType = {
         ENV_PROVIDERS,
         APP_PROVIDERS,
         Configuration,
-        UserService
+       UserController,
+        UsersFactory
     ]
 })
 export class AppModule {

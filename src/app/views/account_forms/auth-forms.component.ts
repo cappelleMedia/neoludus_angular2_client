@@ -7,11 +7,7 @@ import {
     Output,
     EventEmitter,
     HostListener,
-    trigger,
-    state,
-    style,
-    transition,
-    animate
+    OnInit
 } from '@angular/core';
 import {
     FormGroup,
@@ -22,13 +18,14 @@ import {
 import {Observable} from 'rxjs/Observable';
 
 import {
-    containerToggleAnimation
+    // containerToggleAnimation
 } from '../../utils';
 
 import {UserService} from '../../services/users/users.service';
 import {UserValidator} from '../../utils/validators';
 import {UsersFactory} from '../../utils/factories';
 import {User} from '../../models/users';
+import {UserController} from "../../controllers/UserController";
 
 @Component({
     selector: 'auth-forms',
@@ -36,7 +33,27 @@ import {User} from '../../models/users';
     styleUrls: [
         './auth-forms.component.css'
     ],
-    animation: [
-        containerToggleAnimation
+    animations: [
+        // containerToggleAnimation
     ]
 })
+
+export class AuthForms implements OnInit{
+
+    registerForm: FormGroup;
+
+    constructor(private _userController: UserController, private fb: FormBuilder, _userFactory: UsersFactory){
+    }
+
+    ngOnInit(): void{
+        this.buildForm();
+    }
+
+    buildForm(): void {
+        this.registerForm = new FormGroup({});
+    }
+
+    registerSubmit(){
+        console.log('register');
+    }
+}

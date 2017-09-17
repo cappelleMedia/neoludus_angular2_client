@@ -3,7 +3,7 @@
  */
 import {
     Component,
-    ViewEncapsulation, OnInit,
+    ViewEncapsulation,
 } from '@angular/core';
 
 import {Router} from '@angular/router';
@@ -15,7 +15,7 @@ import{
     socialContentAnimationUser
 } from '../../utils/animations/app.animations'
 import {User} from '../../models/users/user/model';
-import {UserService} from '../../services/users/users.service';
+import {UserController} from "../../controllers/UserController";
 
 @Component({
     selector: 'navigation',
@@ -38,7 +38,7 @@ export class NavigationComponent {
     currentPage: string;
     errorMsg: any;
 
-    constructor(public router: Router, private _userService: UserService) {
+    constructor(public router: Router, private _userController: UserController) {
         this.currentPage = this.router.url;
         if (this.currentPage.indexOf('video') === 1) {
             this.showSub = true;
@@ -47,10 +47,15 @@ export class NavigationComponent {
 
     ngOnInit() {
         //FIXME code below is for testing purposes
-        this._userService.getUser('5824848e2a474911584ffd04').subscribe(
-            user => this.loggedInUser = <User>user,
-            error => this.errorMsg = <any>error.json().errMsg
-        );
+        // this._userController.getUser('5829ab96b8f06e33748cbc99').subscribe(
+        //     user => {
+        //         this.loggedInUser = <User>user;
+        //         console.log(this.loggedInUser);
+        //
+        //     }
+        //     ,
+        //     error => this.errorMsg = <any>error.json().errMsg
+        // );
     }
 
     toggleShowSub() {
